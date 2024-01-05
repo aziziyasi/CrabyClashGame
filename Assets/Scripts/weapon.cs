@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
 public class Wepon : MonoBehaviour
@@ -16,7 +17,6 @@ public class Wepon : MonoBehaviour
     [Header("VFX")]
     public GameObject hitVFX;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +24,7 @@ public class Wepon : MonoBehaviour
             nextFire -= Time.deltaTime;
         }
 
-        if (Input.GetButton("Fire1") && nextFire <=0) {
+        if (Input.GetButton("Fire1") && nextFire <=0 ) {
             nextFire = 1 / fireRate;
 
             Fire();
