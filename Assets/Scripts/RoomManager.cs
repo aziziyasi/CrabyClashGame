@@ -29,7 +29,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Debug.Log("We're connected and in a room now! ");
 
-         Invoke("PhotonInit", 10);
+         Invoke("PhotonInit", 5);
     }
     void PhotonInit() {
 
