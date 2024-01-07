@@ -5,11 +5,19 @@ using Photon.Pun;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
+    public static RoomManager instance;
     public GameObject player;
 
     [Space]
     public Transform  spawnPoint;
+
+    [Space]
+    public GameObject RoomCam;
     // Start is called before the first frame update
+    
+    void Awake() {
+        instance = this;
+    }
     void Start()
     {
         Debug.Log("Connecting...");
@@ -17,24 +25,40 @@ public class RoomManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
     }
 
-    public override void OnConnectedToMaster(){
+
+    public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
-        Debug.Log("Connected To Server.");
+
+        Debug.Log("Connected To Server!");
+
         PhotonNetwork.JoinLobby();
+
     }
-    public override void OnJoinedLobby(){
+
+    public override void OnJoinedLobby()
+    {
         base.OnJoinedLobby();
-        
-        PhotonNetwork.JoinOrCreateRoom("RoomOfWeapon" ,null , null);
 
-        Debug.Log("We're connected and in a room now! ");
+        PhotonNetwork.JoinOrCreateRoom("test", null , null);
 
-         Invoke("PhotonInit", 5);
+        Debug.Log("We're Connected and in a room now!");
+
+        Invoke("PhotonInit", 4);
     }
+
     void PhotonInit() {
 
-
+    RoomCam.SetActive(false);
        GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
 
-      }
+       _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+
+    }
+
+    public void RespawnPlayer() {
+        GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
+
+        _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+
+    }
 }

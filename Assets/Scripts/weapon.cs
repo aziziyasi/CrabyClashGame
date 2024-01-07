@@ -8,7 +8,6 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     private AudioSource audio;
-
     public int damage;
     public float fireRate;
     public Camera camera;
