@@ -30,13 +30,38 @@ public class Weapon : MonoBehaviour
     public Animation animation;
     public AnimationClip reload;
 
+    [Header("Recoil Settings")]
+    // [Range(0,1)]
+    // public float recoilPercant = 0.3f;
+
+    [Range(0,2)]
+    public float recoverPercent = 0.7f;
+
+    [Space]
+    public float recoilUp = 0.05f;
+    public float recoilBack = 0.05f;
+
+    private Vector3 originalPosition;
+    private Vector3 recoilVelocity = Vector3.zero;
+
+    private float recoilLenght;
+    private float recoverLenght;
+    private bool recoiling;
+    private bool recovering;
+
     void Start()
     {
        audio = GetComponent<AudioSource>();
 
         magText.text = mag.ToString();
-        ammoText.text = ammo + "/" + magAmmo;
+        ammoText.text = " | " + ammo + "/" + magAmmo;
+
+        originalPosition = transform.localPosition;
+
+        recoilLenght =  0;
+        recoverLenght =  1 / fireRate * recoverPercent;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -50,7 +75,7 @@ public class Weapon : MonoBehaviour
             ammo--;
 
             magText.text = mag.ToString();
-            ammoText.text = ammo + "/" + magAmmo;
+            ammoText.text = " | " + ammo + "/" + magAmmo;
 
             Fire();
         }
@@ -58,7 +83,13 @@ public class Weapon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             Reload();
         }
+         if (recoiling) {
+            Recoil();
+        }
 
+        if (recovering) {
+            Recovering();
+        }
        
     }
 
@@ -72,9 +103,13 @@ public class Weapon : MonoBehaviour
         }
 
         magText.text = mag.ToString();
-        ammoText.text = ammo + "/" + magAmmo;
+        ammoText.text = " | " + ammo + "/" + magAmmo;
     }
     void Fire() {
+
+        recoiling = true;
+        recovering = false;
+        
         Ray ray = new Ray(camera.transform.position,camera.transform.forward);
 
         RaycastHit hit;
@@ -87,4 +122,22 @@ public class Weapon : MonoBehaviour
             
         }
     }
+    void Recoil() {
+        Vector3 finalPosition = new Vector3(originalPosition.x,originalPosition.y+recoilUp,originalPosition.z-recoilBack);
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoilLenght);
+        if (transform.localPosition == finalPosition) {
+            recoiling = false;
+            recovering = true;
+        }
+    }
+
+     void Recovering() {
+        Vector3 finalPosition = originalPosition;
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoverLenght);
+        if (transform.localPosition == finalPosition) {
+            recoiling = false;
+            recovering = false;
+        }
+    }
+
 }
