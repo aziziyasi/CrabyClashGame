@@ -19,7 +19,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [Space]
     public GameObject nameUI;
     public GameObject connectingUI;
-    private string nickname="undefined";
+
+    private string nickname =  "unnamed";
 
     // Start is called before the first frame update
 
@@ -73,12 +74,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     }
 
-     public void RespawnPlayer() {
+     public void SpawnPlayer() {
         GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
 
         _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+       // _player.GetComponent<Health>().IsLocalPlayer = true;
 
-        _player.GetComponent<PhotonView>().RPC("SetNickName",RpcTarget.All,nickname);
+
+        _player.GetComponent<PhotonView>().RPC("SetNickName",RpcTarget.AllBuffered, nickname);
 
     }
 }
