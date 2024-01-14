@@ -14,14 +14,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [Space]
     public GameObject roomCam;
 
+    
+
     [Space]
     public GameObject nameUI;
     public GameObject connectingUI;
-    
+    private string nickname="undefined";
 
-    public string nickname = "unnamed";
     // Start is called before the first frame update
-    
+
     void Awake() {
         instance = this;
     }
@@ -29,7 +30,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public void ChangeNickname(string _name) {
         nickname = _name;
     }
-
     public void JoinRoomButtonPressed() {
         Debug.Log("Connecting...");
 
@@ -38,7 +38,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         nameUI.SetActive(false);
         connectingUI.SetActive(true);
     }
-
     void Start()
     {
 
@@ -67,14 +66,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void PhotonInit() {
 
-    roomCam.SetActive(false);
+       roomCam.SetActive(false);
        GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
 
        _player.GetComponent<PlayerSetup>().IsLocalPlayer();
 
     }
 
-    public void RespawnPlayer() {
+     public void RespawnPlayer() {
         GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
 
         _player.GetComponent<PlayerSetup>().IsLocalPlayer();
