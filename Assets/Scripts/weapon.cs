@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 using TMPro;
 using UnityEngine;
 
@@ -113,10 +114,22 @@ public class Weapon : MonoBehaviour
         Ray ray = new Ray(camera.transform.position,camera.transform.forward);
 
         RaycastHit hit;
-           audio.PlayOneShot(audio.clip);
+
+        audio.PlayOneShot(audio.clip);
+        PhotonNetwork.LocalPlayer.AddScore(1);
+
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 100f)) {
             PhotonNetwork.Instantiate(hitVFX.name,hit.point,Quaternion.identity);
-            if (hit.transform.gameObject.GetComponent<Health>()) {
+
+            if (hit.transform.gameObject.GetComponent<Health>())
+             {
+
+                PhotonNetwork.LocalPlayer.AddScore(damage);
+                if(damage > hit.transform.gameObject.GetComponent<Health>().health){
+                    //kill
+                    PhotonNetwork.LocalPlayer.AddScore(100);
+                }
+
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All,damage);  
             }
             
@@ -131,7 +144,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-     void Recovering() {
+    void Recovering() {
         Vector3 finalPosition = originalPosition;
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoverLenght);
         if (transform.localPosition == finalPosition) {
