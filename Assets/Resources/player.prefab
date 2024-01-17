@@ -312,7 +312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7917275309874457572
 Transform:
   m_ObjectHideFlags: 0
@@ -415,7 +415,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 43b6206d4ca25b04fbe958322751c6c9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1637a590045ef7747b440da361921ca3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
@@ -1626,9 +1626,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5721649874899354124}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
-  m_LocalScale: {x: 0.50418335, y: 0.54183346, z: 0.54183346}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 19.999975}
+  m_LocalScale: {x: 0.5041834, y: 0.5418335, z: 0.54183346}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2544075703410459980}
@@ -1636,7 +1636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: 356.5}
+  m_AnchoredPosition: {x: -14.000301, y: 356.4997}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3782163960463374321
@@ -2622,13 +2622,13 @@ PrefabInstance:
       addedObject: {fileID: 8594963097171468419}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7fa01bf8e81e6ed4697b0386a611c6fa, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 2618964347768314467}
+      addedObject: {fileID: 8996655635633423248}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7fa01bf8e81e6ed4697b0386a611c6fa, type: 3}
       insertIndex: 2
       addedObject: {fileID: 7668945525919468736}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7fa01bf8e81e6ed4697b0386a611c6fa, type: 3}
       insertIndex: 3
-      addedObject: {fileID: 8996655635633423248}
+      addedObject: {fileID: 2618964347768314467}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7fa01bf8e81e6ed4697b0386a611c6fa, type: 3}
       insertIndex: 4
       addedObject: {fileID: 7917275309874457572}
@@ -3315,6 +3315,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75b88548b9884964c9cbc0aad30bcfcd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8385691992544621124}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75b88548b9884964c9cbc0aad30bcfcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2251606843327430721}
   m_SourcePrefab: {fileID: 100100000, guid: 75b88548b9884964c9cbc0aad30bcfcd, type: 3}
 --- !u!4 &8625379208535309295 stripped
 Transform:
@@ -3373,7 +3376,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 463.39215
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3499,6 +3502,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.730299, y: 10.973682, z: 53.261642}
   m_Center: {x: 3.6219008, y: 4.986841, z: 0.053960185}
+--- !u!895512359 &2251606843327430721
+AimConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005035538188149077}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_RotationAtRest: {x: 178, y: -364, z: -180}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AimVector: {x: 0, y: 0, z: 1}
+  m_UpVector: {x: 0, y: 1, z: 0}
+  m_WorldUpVector: {x: 0, y: 1, z: 0}
+  m_WorldUpObject: {fileID: 0}
+  m_UpType: 0
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources: []
 --- !u!4 &9206400535178267319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1151388028547126963, guid: 75b88548b9884964c9cbc0aad30bcfcd, type: 3}
@@ -3667,8 +3693,16 @@ PrefabInstance:
       value: CFXR3 Hit Ice B (Air) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8586099573454401421, guid: 220920b692d88404cb41d94f84e46e8b, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586099573454401421, guid: 220920b692d88404cb41d94f84e46e8b, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586099573454401421, guid: 220920b692d88404cb41d94f84e46e8b, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8586099573454401421, guid: 220920b692d88404cb41d94f84e46e8b, type: 3}
       propertyPath: InitialModule.startLifetime.scalar

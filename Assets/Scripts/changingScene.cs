@@ -9,4 +9,9 @@ public class changingScene : MonoBehaviour
         SceneManager.LoadScene(sceneID);
     }
 
+    public void QuitGame(){
+        Debug.Log("ButtonPress");
+        Application.Quit();
+    }
+
 }

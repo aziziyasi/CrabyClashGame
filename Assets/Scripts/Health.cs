@@ -30,12 +30,12 @@ public class Health : MonoBehaviour
         healthBar.sizeDelta = new Vector2(originalHealthBarSize * health / 100f, healthBar.sizeDelta.y);
         
 
-        healthText.text = health.ToString();
+       // healthText.text = health.ToString();
 
         if (health <= 0)
          {
             if(isLocalPlayer){
-                RoomManager.instance.SpawnPlayer();
+                RoomManager.instance.RespawnPlayer();
                 //RoomManager.instance.deaths++;
                 //RoomManager.instance.SetHashes();
             }
