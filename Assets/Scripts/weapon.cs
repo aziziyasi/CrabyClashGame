@@ -66,6 +66,8 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+
         if (nextFire > 0) {
             nextFire -= Time.deltaTime;
         }
@@ -106,8 +108,11 @@ public class Weapon : MonoBehaviour
         magText.text = mag.ToString();
         ammoText.text = " | " + ammo + "/" + magAmmo;
     }
-    void Fire() {
 
+
+
+    void Fire() {
+    
         recoiling = true;
         recovering = false;
         
@@ -118,7 +123,7 @@ public class Weapon : MonoBehaviour
         audio.PlayOneShot(audio.clip);
         PhotonNetwork.LocalPlayer.AddScore(1);
 
-        if (Physics.Raycast(ray.origin, ray.direction, out hit, 100f)) {
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, 300f)) {
             PhotonNetwork.Instantiate(hitVFX.name,hit.point,Quaternion.identity);
 
             if (hit.transform.gameObject.GetComponent<Health>())
@@ -131,8 +136,9 @@ public class Weapon : MonoBehaviour
                 }
 
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All,damage);  
+                
             }
-            
+           
         }
     }
     void Recoil() {

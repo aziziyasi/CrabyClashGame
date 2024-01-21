@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
     public float walkSpeed = 4f;
     public float sprintSpeed = 20f;
     public float maxVelocityChange = 10f;
+
+    private NavMeshAgent agent;
 
     [Space]
     public float jumpHeight = 5f;
@@ -21,6 +24,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame

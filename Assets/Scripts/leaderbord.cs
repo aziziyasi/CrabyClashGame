@@ -13,7 +13,7 @@ public class leaderbord : MonoBehaviour
    [Header("Options")]
    public float refreshRate = 1f;
 
-   [Header("UI")]
+   [Header("UI")] 
    public GameObject[] slots;
 
    [Space]
