@@ -123,24 +123,29 @@ public class Weapon : MonoBehaviour
         audio.PlayOneShot(audio.clip);
         PhotonNetwork.LocalPlayer.AddScore(1);
 
+        
+
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 300f)) {
             PhotonNetwork.Instantiate(hitVFX.name,hit.point,Quaternion.identity);
 
             if (hit.transform.gameObject.GetComponent<Health>())
-             {
-
+             /*{
                 PhotonNetwork.LocalPlayer.AddScore(damage);
                 if(damage > hit.transform.gameObject.GetComponent<Health>().health){
                     //kill
                     PhotonNetwork.LocalPlayer.AddScore(100);
-                }
+                }*/
+                hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All,damage);     
 
-                hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All,damage);  
-                
+                if(hit.transform.gameObject.GetComponent<EnemyAI>()){
+                    hit.transform.gameObject.GetComponent<PhotonView>().RPC("takedamage", RpcTarget.All,damage);
+
+                }
             }
+            
+        } 
+
            
-        }
-    }
     void Recoil() {
         Vector3 finalPosition = new Vector3(originalPosition.x,originalPosition.y+recoilUp,originalPosition.z-recoilBack);
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition,finalPosition,ref recoilVelocity,recoilLenght);
@@ -160,3 +165,5 @@ public class Weapon : MonoBehaviour
     }
 
 }
+
+

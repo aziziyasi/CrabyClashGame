@@ -1,19 +1,35 @@
 using System.Collections;
+using System.Collections.Generic;
+using Photon.Pun;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
-
 
 public class EnemyAI : MonoBehaviour
 {
-   private NavMeshAgent agent;
-   private Transform player;
+    [Header("VFX")]
+    public GameObject bloodParticleSystem;
 
-   void Start(){
-    agent = GetComponent<NavMeshAgent>();
-    player = FindObjectOfType<Movement>().transform;
-   }
+    [Header("Animation")]
+    public Animation animation;
+    public AnimationClip animDie;
 
-   void Update(){
-    agent.SetDestination(player.position);
-   }
+    //public AnimationClip anim;
+
+    public float Heealth=20f;
+
+    [PunRPC]
+    public void takedamage(int amount){
+        Heealth-=amount;
+        if(Heealth<=0){
+            //animDie = GetComponent<AnimationClip>();
+            animation.Play(animDie.name);
+            Die();
+        }
+    }
+
+    void Die(){ 
+            
+            Destroy(gameObject); 
+    }
 }
