@@ -23,7 +23,6 @@ public class EnemyAI : MonoBehaviour
         Heealth-=amount;
         if(Heealth<=0){
             //animDie = GetComponent<AnimationClip>();
-            animation.Play(animDie.name);
             Die();
         }
     }

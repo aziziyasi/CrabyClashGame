@@ -42,14 +42,12 @@ public class Health : MonoBehaviour
 
         if (health <= 0)
          {
-            if(GameOver){
-                RoomManager.instance.RespawnGameOver();
-            }  
-            /*if(isLocalPlayer){
+           
+            if(isLocalPlayer){
                 RoomManager.instance.RespawnPlayer();
                 //RoomManager.instance.deaths++;
                 //RoomManager.instance.SetHashes();
-            }*/
+            }
             
             Destroy(gameObject);
         }

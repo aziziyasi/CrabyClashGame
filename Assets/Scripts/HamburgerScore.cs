@@ -9,11 +9,11 @@ public class HamburgerScore : MonoBehaviour
 {
 
     public Health HealthScore;
-    public AudioSource audio;
+    public AudioSource audioS;
 
     void Start()
     {
-       audio = GetComponent<AudioSource>();
+       audioS = GetComponent<AudioSource>();
 
     }
 
@@ -23,7 +23,7 @@ public class HamburgerScore : MonoBehaviour
     public AnimationClip Zoom;
 
   void OnTriggerEnter(Collider other){
-    audio.PlayOneShot(audio.clip);
+    audioS.PlayOneShot(audioS.clip);
     
       if(other.gameObject.tag == "Player"){
             HealthScore=FindObjectOfType<Health>();

@@ -5035,9 +5035,6 @@ PrefabInstance:
       addedObject: {fileID: 1753350974094046733}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6abf00c40931b194ca97e7c0d76e0b2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5895718559136571887}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6abf00c40931b194ca97e7c0d76e0b2d, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7619836091336566487}
     - targetCorrespondingSourceObject: {fileID: 4161439127387655719, guid: 6abf00c40931b194ca97e7c0d76e0b2d, type: 3}
       insertIndex: -1
@@ -5183,22 +5180,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!111 &5895718559136571887
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565354932655237258}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b2b8170faf6655440bc47860a4297d41, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: b2b8170faf6655440bc47860a4297d41, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &7619836091336566487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5212,6 +5193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodParticleSystem: {fileID: 6462023510666771577}
-  animation: {fileID: 5895718559136571887}
-  animDie: {fileID: 7400000, guid: b2b8170faf6655440bc47860a4297d41, type: 2}
+  animation: {fileID: 0}
+  animDie: {fileID: 0}
   Heealth: 20

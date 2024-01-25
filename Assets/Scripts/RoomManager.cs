@@ -146,8 +146,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         roomCam.SetActive(false);
         GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
 
-      /*  _player.GetComponent<PlayerSetup>().IsLocalPlayer();
-        _player.GetComponent<Health>().isLocalPlayer = true;*/
+       _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+        _player.GetComponent<Health>().isLocalPlayer = true;
 
 
         _player.GetComponent<PhotonView>().RPC("SetNickname",RpcTarget.AllBuffered, nickname);
@@ -178,9 +178,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     }
 
-    public void RespawnGameOver(){
+   /* public void RespawnGameOver(){
         GameOver.SetActive(true);
         nameUI.SetActive(false);
         connectingUI.SetActive(false);
-    }
+    }*/
 }
