@@ -5192,11 +5192,11 @@ Animation:
   m_GameObject: {fileID: 7565354932655237258}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0b7bc38d86d40c443be23c20b0dccd12, type: 2}
+  m_Animation: {fileID: 7400000, guid: b2b8170faf6655440bc47860a4297d41, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 0b7bc38d86d40c443be23c20b0dccd12, type: 2}
+  - {fileID: 7400000, guid: b2b8170faf6655440bc47860a4297d41, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &7619836091336566487
@@ -5213,5 +5213,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodParticleSystem: {fileID: 6462023510666771577}
   animation: {fileID: 5895718559136571887}
-  animDie: {fileID: 7400000, guid: 0b7bc38d86d40c443be23c20b0dccd12, type: 2}
+  animDie: {fileID: 7400000, guid: b2b8170faf6655440bc47860a4297d41, type: 2}
   Heealth: 20

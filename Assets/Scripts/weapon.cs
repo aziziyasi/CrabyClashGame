@@ -129,7 +129,7 @@ public class Weapon : MonoBehaviour
             PhotonNetwork.Instantiate(hitVFX.name,hit.point,Quaternion.identity);
 
             if (hit.transform.gameObject.GetComponent<Health>())
-             /*{
+            /* {
                 PhotonNetwork.LocalPlayer.AddScore(damage);
                 if(damage > hit.transform.gameObject.GetComponent<Health>().health){
                     //kill

@@ -11,25 +11,28 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static RoomManager instance;
     public GameObject player;
     public GameObject enemy;
+    public GameObject HamburgerScore;
 
-    float x;
-    float y;
-    float z;
-    Vector3 pos;
-    Vector3 pos1;
+    public Health healthGameOver;
+
+    float x , m;
+    float y , n;
+    float z ,b ;
+    Vector3 pos , posScore;
+    Vector3 pos1 , posScore1;
 
 
     bool joined=false;
+    int joined1=10;
 
-    int joined1=5;
+    bool joinedScore=false;
+    int joined1Score=80;
 
     [Space]
     public Transform  spawnPoint;
 
     [Space]
     public GameObject roomCam;
-
-    
 
     [Space]
     public GameObject nameUI;
@@ -53,12 +56,26 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
 
         if(joined){
-            joined1+=5;
+            joined1+=10;
             Invoke("Respawnenemy", joined1);
         }
 
-    }
+        if(joinedScore){
+            joined1Score+=80;
+            Invoke("RespawnHamburgerScore", joined1Score);
+        }
+       /* if(healthGameOver){
+             if(healthGameOver.health>=0){
+                GameOver.SetActive(true);
+                nameUI.SetActive(false);
+                connectingUI.SetActive(false);
+            }
+            Debug.Log(healthGameOver.health);
+           
+        }*/
 
+
+    }
     public void ChangeNickname(string _name) {
         nickname = _name;
     }
@@ -70,22 +87,19 @@ public class RoomManager : MonoBehaviourPunCallbacks
         GameOver.SetActive(false);
         nameUI.SetActive(false);
         connectingUI.SetActive(true);
+
     }
     void Start()
     {
-    
+       // healthGameOver = FindObjectOfType<Health>();
     }
-
-
     public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
 
         Debug.Log("Connected To Server!");
-
         PhotonNetwork.JoinLobby();
 
     }
-
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
@@ -96,8 +110,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Invoke("RespawnPlayer", 3);
         Invoke("Respawnenemy", joined1);
+        Invoke("RespawnHamburgerScore", joined1Score);
 
         joined=true;
+        joinedScore=true;
+
 
     }
     
@@ -120,18 +137,23 @@ public class RoomManager : MonoBehaviourPunCallbacks
         z = Random.Range(-26, 510);
         pos1 = new Vector3(x, y, z);
 
+
+        m = Random.Range(139, 500);
+        n = Random.Range(20, 25);
+        b = Random.Range(1, 400);
+        posScore1 = new Vector3(m, n, b);
+
         roomCam.SetActive(false);
         GameObject _player = PhotonNetwork.Instantiate (player.name, spawnPoint.position,Quaternion.identity);
 
-        _player.GetComponent<PlayerSetup>().IsLocalPlayer();
-        _player.GetComponent<Health>().isLocalPlayer = true;
+      /*  _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+        _player.GetComponent<Health>().isLocalPlayer = true;*/
 
 
         _player.GetComponent<PhotonView>().RPC("SetNickname",RpcTarget.AllBuffered, nickname);
         PhotonNetwork.LocalPlayer.NickName = nickname;
 
     }
-
 
     public void Respawnenemy() {
 
@@ -146,5 +168,19 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     }
 
+    public void RespawnHamburgerScore() {
 
+            m = Random.Range(139, 500);
+            n = Random.Range(20, 25);
+            b = Random.Range(1, 400);
+            posScore1 = new Vector3(m, n, b);
+            GameObject _playert = PhotonNetwork.Instantiate (HamburgerScore.name, posScore1,Quaternion.identity);
+
+    }
+
+    public void RespawnGameOver(){
+        GameOver.SetActive(true);
+        nameUI.SetActive(false);
+        connectingUI.SetActive(false);
+    }
 }
